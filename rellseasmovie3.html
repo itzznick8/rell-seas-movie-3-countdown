@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RELL Seas — Movie 3 Countdown</title>
+  <meta name="theme-color" content="#05070b" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Inter:wght@400;600;700;800&display=swap');
+
+    * { box-sizing: border-box; }
+    html, body { margin: 0; min-height: 100%; }
+    body {
+      color: #fff;
+      background:
+        radial-gradient(circle at 50% 35%, rgba(33, 116, 255, .16), transparent 35%),
+        radial-gradient(circle at 15% 80%, rgba(0, 211, 255, .08), transparent 30%),
+        #05070b;
+      font-family: Inter, system-ui, sans-serif;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: .18;
+      background-image:
+        linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+      background-size: 44px 44px;
+      mask-image: linear-gradient(to bottom, black, transparent 85%);
+    }
+
+    .wrap {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 34px 20px 48px;
+      position: relative;
+    }
+
+    .topline {
+      width: min(1080px, 100%);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      color: #8c98ab;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+
+    .brand {
+      color: white;
+      font-family: "Black Ops One", Impact, sans-serif;
+      font-size: clamp(22px, 4vw, 34px);
+      letter-spacing: .04em;
+    }
+
+    .live {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid rgba(255,255,255,.1);
+      background: rgba(255,255,255,.04);
+      padding: 9px 12px;
+      border-radius: 999px;
+    }
+
+    .dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: #ff3030;
+      box-shadow: 0 0 14px #ff3030;
+      animation: pulse 1.3s infinite;
+    }
+
+    @keyframes pulse {
+      50% { transform: scale(.55); opacity: .45; }
+    }
+
+    main {
+      width: min(1080px, 100%);
+      flex: 1;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 65px 0;
+    }
+
+    .hero {
+      width: 100%;
+      position: relative;
+    }
+
+    .eyebrow {
+      color: #6ec8ff;
+      font-weight: 800;
+      font-size: 13px;
+      letter-spacing: .32em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    h1 {
+      margin: 0;
+      font-family: "Black Ops One", Impact, sans-serif;
+      font-size: clamp(58px, 12vw, 150px);
+      line-height: .86;
+      letter-spacing: .015em;
+      text-transform: uppercase;
+      text-shadow:
+        0 2px 0 #1a2430,
+        0 12px 50px rgba(35, 157, 255, .2);
+    }
+
+    .movie {
+      display: block;
+      color: #eaf7ff;
+    }
+
+    .three {
+      display: block;
+      color: #2ea8ff;
+      -webkit-text-stroke: 1px rgba(255,255,255,.18);
+      text-shadow: 0 0 40px rgba(46,168,255,.35);
+    }
+
+    .subtitle {
+      margin: 28px auto 0;
+      max-width: 680px;
+      color: #aeb9c9;
+      font-size: clamp(14px, 2vw, 18px);
+      line-height: 1.7;
+    }
+
+    .countdown {
+      margin: 44px auto 0;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      max-width: 850px;
+    }
+
+    .unit {
+      min-width: 0;
+      padding: 22px 12px 18px;
+      border: 1px solid rgba(100, 180, 255, .18);
+      border-radius: 18px;
+      background: linear-gradient(180deg, rgba(255,255,255,.065), rgba(255,255,255,.018));
+      box-shadow: inset 0 1px rgba(255,255,255,.05), 0 15px 50px rgba(0,0,0,.25);
+      backdrop-filter: blur(10px);
+    }
+
+    .num {
+      font-family: "Black Ops One", Impact, sans-serif;
+      font-size: clamp(38px, 7vw, 72px);
+      line-height: 1;
+      color: #f4fbff;
+    }
+
+    .label {
+      margin-top: 9px;
+      color: #728196;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+    }
+
+    .target {
+      margin-top: 22px;
+      color: #77869b;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .08em;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 30px;
+    }
+
+    button {
+      cursor: pointer;
+      border: 1px solid rgba(255,255,255,.14);
+      color: white;
+      background: rgba(255,255,255,.06);
+      border-radius: 12px;
+      padding: 12px 16px;
+      font-weight: 800;
+      transition: .2s ease;
+    }
+    button:hover { transform: translateY(-2px); background: rgba(255,255,255,.1); }
+    .primary { background: #168ee8; border-color: #168ee8; box-shadow: 0 10px 30px rgba(22,142,232,.2); }
+
+    footer {
+      width: min(1080px, 100%);
+      color: #566276;
+      font-size: 11px;
+      text-align: center;
+      letter-spacing: .08em;
+    }
+
+    .done h1 .three { color: #35e39b; }
+    .done .eyebrow { color: #35e39b; }
+
+    @media (max-width: 650px) {
+      .topline { align-items: flex-start; }
+      .live { font-size: 9px; }
+      .countdown { gap: 7px; }
+      .unit { padding: 18px 5px 15px; border-radius: 13px; }
+      .num { font-size: 34px; }
+      .label { font-size: 8px; letter-spacing: .12em; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="topline">
+      <div class="brand">RELL SEAS</div>
+      <div class="live"><span class="dot"></span> MOVIE 3 COUNTDOWN</div>
+    </div>
+
+    <main>
+      <section class="hero" id="hero">
+        <div class="eyebrow">THE WAIT IS ALMOST OVER</div>
+        <h1><span class="movie">MOVIE</span><span class="three">3</span></h1>
+        <p class="subtitle">
+          The RELL Seas Movie 3 countdown has begun. Get ready for the next chapter.
+        </p>
+
+        <div class="countdown" aria-label="Countdown to RELL Seas Movie 3">
+          <div class="unit"><div class="num" id="days">00</div><div class="label">Days</div></div>
+          <div class="unit"><div class="num" id="hours">00</div><div class="label">Hours</div></div>
+          <div class="unit"><div class="num" id="minutes">00</div><div class="label">Minutes</div></div>
+          <div class="unit"><div class="num" id="seconds">00</div><div class="label">Seconds</div></div>
+        </div>
+
+        <div class="target">OCTOBER 24, 2026 • 1:31 PM EST</div>
+
+        <div class="buttons">
+          <button class="primary" id="copyBtn">COPY COUNTDOWN LINK</button>
+          <button id="timezoneBtn">SHOW MY TIME</button>
+        </div>
+      </section>
+    </main>
+
+    <footer>UNOFFICIAL FAN COUNTDOWN • NOT AFFILIATED WITH RELL GAMES</footer>
+  </div>
+
+  <script>
+    // 1:31 PM EST = 18:31 UTC.
+    // This intentionally uses fixed EST (UTC-5), exactly as requested.
+    const target = new Date("2026-10-24T18:31:00Z");
+
+    const $ = id => document.getElementById(id);
+    const pad = n => String(Math.max(0, n)).padStart(2, "0");
+
+    function update() {
+      const now = new Date();
+      let diff = target - now;
+
+      if (diff <= 0) {
+        diff = 0;
+        document.body.classList.add("done");
+        $("hero").querySelector(".eyebrow").textContent = "THE WAIT IS OVER";
+        $("hero").querySelector(".subtitle").textContent =
+          "MOVIE 3 TIME. The countdown has reached zero.";
+      }
+
+      const totalSeconds = Math.floor(diff / 1000);
+      const days = Math.floor(totalSeconds / 86400);
+      const hours = Math.floor((totalSeconds % 86400) / 3600);
+      const minutes = Math.floor((totalSeconds % 3600) / 60);
+      const seconds = totalSeconds % 60;
+
+      $("days").textContent = pad(days);
+      $("hours").textContent = pad(hours);
+      $("minutes").textContent = pad(minutes);
+      $("seconds").textContent = pad(seconds);
+    }
+
+    update();
+    setInterval(update, 250);
+
+    $("copyBtn").addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText(location.href);
+        $("copyBtn").textContent = "LINK COPIED!";
+        setTimeout(() => $("copyBtn").textContent = "COPY COUNTDOWN LINK", 1800);
+      } catch {
+        $("copyBtn").textContent = "COPY FAILED";
+        setTimeout(() => $("copyBtn").textContent = "COPY COUNTDOWN LINK", 1800);
+      }
+    });
+
+    $("timezoneBtn").addEventListener("click", () => {
+      const local = target.toLocaleString(undefined, {
+        dateStyle: "full",
+        timeStyle: "short"
+      });
+      $("timezoneBtn").textContent = local;
+      setTimeout(() => $("timezoneBtn").textContent = "SHOW MY TIME", 5000);
+    });
+  </script>
+</body>
+</html>
