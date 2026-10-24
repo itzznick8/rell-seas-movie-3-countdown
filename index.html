@@ -27,7 +27,7 @@
 <footer>Unofficial fan-made countdown. Not affiliated with or endorsed by RELL Games.<br>Countdown target is set to 7:00 PM EST (UTC−5).</footer>
 </main>
 <script>
-const target=new Date("2026-10-25T00:00:00Z").getTime();
+const target=new Date("2026-10-24T23:00:00Z").getTime();
 const f={days:document.getElementById("days"),hours:document.getElementById("hours"),minutes:document.getElementById("minutes"),seconds:document.getElementById("seconds")};
 const pad=n=>String(n).padStart(2,"0");
 function update(){let r=target-Date.now();if(r<=0){Object.values(f).forEach(e=>e.textContent="00");document.querySelector(".subtitle").textContent="Movie 3 is here!";return}let s=Math.floor(r/1000);f.days.textContent=Math.floor(s/86400);f.hours.textContent=pad(Math.floor(s%86400/3600));f.minutes.textContent=pad(Math.floor(s%3600/60));f.seconds.textContent=pad(s%60)}
